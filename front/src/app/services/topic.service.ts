@@ -8,6 +8,8 @@ import { environment } from 'src/environments/environment';
 @Injectable({ providedIn: 'root' })
 export class TopicService {
   private apiUrl = `${environment.apiUrl}/topics`;
+  private userTopicsUrl = `${environment.apiUrl}/user-topics`;
+
 
   constructor(private http: HttpClient) {}
 
@@ -20,10 +22,18 @@ export class TopicService {
   }
 
   unsubscribeFromTopic(topicId: number): Observable<void> {
-    return this.http.post<void>(`${this.apiUrl}/${topicId}/unsubscribe`, {});
+    return this.http.delete<void>(`${this.apiUrl}/${topicId}/unsubscribe`, {});
   }
 
   getAllTopics(): Observable<Topic[]> {
     return this.http.get<Topic[]>(this.apiUrl);
+  }
+
+  getTopicById(id: number): Observable<Topic> {
+  return this.http.get<Topic>(`${this.apiUrl}/${id}`);
+  }
+
+  getUserTopics(): Observable<Topic[]> {
+    return this.http.get<Topic[]>(this.userTopicsUrl);
   }
 }

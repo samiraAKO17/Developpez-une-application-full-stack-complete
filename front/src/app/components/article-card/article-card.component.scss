@@ -1,0 +1,52 @@
+.article-card {
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  .article-meta {
+    display: flex;
+    flex-direction: column;
+
+    .article-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .article-info {
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+      color: #666;
+
+      .separator {
+        margin: 0 6px;
+      }
+    }
+  }
+
+  .article-content {
+    font-size: 1rem;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* nombre de lignes visibles */
+    -webkit-box-orient: vertical;
+  }
+}
+.article-info {
+  display: flex;
+  align-items: center;
+  gap: 70px; 
+  color: #666;
+}

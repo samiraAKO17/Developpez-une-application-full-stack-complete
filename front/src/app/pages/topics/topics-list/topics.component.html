@@ -1,0 +1,13 @@
+<div class="topics-container">
+  <mat-card class="topic-card" *ngFor="let topic of topics">
+    <div class="topic-content">
+      <h3>{{ topic.title }}</h3>
+      <p>{{ topic.description }}</p>
+      <button mat-stroked-button
+              [color]="topic.isSubscribed ? 'warn' : 'primary'"
+              (click)="toggleSubscription(topic)">
+        {{ topic.isSubscribed ? 'Se désabonner' : 'S’abonner' }}
+      </button>
+    </div>
+  </mat-card>
+</div>

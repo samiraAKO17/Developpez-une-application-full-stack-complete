@@ -8,10 +8,15 @@ import { environment } from 'src/environments/environment';
 @Injectable({ providedIn: 'root' })
 export class CommentService {
   private apiUrl = `${environment.apiUrl}/comments`;
+  private base = `${environment.apiUrl}/articles/comments`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   addComment(payload: Partial<Comment>): Observable<Comment> {
     return this.http.post<Comment>(this.apiUrl, payload);
+  }
+
+  getCommentsByArticle(articleId: number): Observable<Comment[]> {
+    return this.http.get<Comment[]>(`${this.base}/${articleId}`);
   }
 }

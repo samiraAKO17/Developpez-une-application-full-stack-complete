@@ -6,6 +6,6 @@ export interface Article {
   title: string;
   content: string;
   date: Date;
-  user: number;
   topic: number;
+  user: number;
 }

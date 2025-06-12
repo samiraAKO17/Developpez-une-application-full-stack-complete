@@ -1,0 +1,118 @@
+:host {
+  display: block;
+  background-color: white;
+  min-height: 100vh;
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+
+  .logo {
+    height: 40px;
+  }
+}
+
+.register-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+
+  .back-button {
+    align-self: flex-start;
+  }
+
+  h2 {
+    margin: 0.5rem 0;
+    font-weight: 450;
+  }
+
+  form {
+    width: 80%;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+
+    button {
+      background-color: #7550ec;
+      color: white;
+      align-self: center;
+      width: 150px;
+    }
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 0;
+
+  label {
+    font-weight: 350;
+    font-size: 0.85rem;
+  }
+
+  .custom-field {
+
+
+    input {
+      border: 1px solid black;
+      border-radius: 4px;
+      outline: none;
+      width: 100%;
+      height: 25px;
+    }
+  }
+}
+
+//caché le logo mobile
+.logo-centered {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  :host {
+    padding-top: 3rem; // Laisse de la place pour la flèche
+  }
+
+  .logo-centered {
+    display: block;
+
+  }
+
+  .nav-bar {
+    display: none; // Cache complètement la nav-bar sur mobile
+  }
+
+  .back-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 10;
+  }
+
+  .logo-centered {
+    display: block;
+    margin: auto auto auto auto;
+    height: 100px;
+  }
+
+  .register-wrapper {
+    padding: 0 1rem;
+
+    h2 {
+      margin-top: 0rem;
+    }
+
+    form {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+}

@@ -1,1 +1,44 @@
-<p>register works!</p>
+<!-- Barre avec uniquement le logo -->
+<header class="nav-bar">
+  <img src="assets/logo_p6.png" alt="Logo MDD" class="logo" />
+</header>
+<!-- Logo mobile -->
+<img src="assets/logo_p6.png" alt="Logo MDD" class="logo-centered" />
+
+<div class="register-wrapper">
+  <!-- Flèche de retour -->
+  <button mat-icon-button class="back-button" routerLink="/">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+
+  <h2>Inscription</h2>
+
+
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <mat-form-field class="custom-field">
+        <label for="username">Nom d’utilisateur</label>
+        <input matInput id="username" type="text" formControlName="username" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field class="custom-field">
+        <label for="email">Adresse e-mail</label>
+        <input matInput id="email" type="email" formControlName="email" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field class="custom-field">
+        <label for="password">Mot de passe</label>
+        <input matInput id="password" type="password" formControlName="password" />
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button type="submit" [disabled]="registerForm.invalid">
+      S’inscrire
+    </button>
+  </form>
+</div>

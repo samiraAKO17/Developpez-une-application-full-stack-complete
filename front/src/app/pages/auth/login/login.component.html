@@ -1,1 +1,36 @@
-<p>login works!</p>
+<!-- NavBar Desktop -->
+<header class="nav-bar">
+  <img src="assets/logo_p6.png" alt="Logo MDD" class="logo" />
+</header>
+
+<!-- Logo Mobile -->
+<img src="assets/logo_p6.png" alt="Logo MDD" class="logo-centered" />
+
+<!-- Flèche retour Mobile -->
+<button mat-icon-button class="back-button" routerLink="/">
+  <mat-icon>arrow_back</mat-icon>
+</button>
+
+<div class="login-wrapper">
+  <h2>Connexion</h2>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <mat-form-field class="custom-field">
+        <label for="email">Adresse e-mail</label>
+        <input matInput id="email" type="email" formControlName="email" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field class="custom-field">
+        <label for="password">Mot de passe</label>
+        <input matInput id="password" type="password" formControlName="password" />
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button type="submit" [disabled]="loginForm.invalid">
+      Se connecter
+    </button>
+  </form>
+</div>

@@ -1,0 +1,73 @@
+.feed-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: 1rem auto;
+  padding: 0 0;
+
+  .sort-dropdown {
+    width: 150px;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+
+    .sort-dropdown {
+      width: 30%;
+    }
+
+    .left-side,
+    .right-side {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+
+.feed {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+
+.sort-dropdown {
+  width: 150px;
+
+  ::ng-deep .mat-form-field-flex {
+    background-color: #f5f5f5 !important;
+    border-radius: 8px !important;
+    padding: 0 12px !important;
+    height: 40px !important; // 🔽 hauteur réduite
+    min-height: 40px !important;
+    font-size: 14px;
+  }
+
+  ::ng-deep .mat-select-trigger {
+    padding: 0 !important;
+  }
+
+  ::ng-deep .mat-form-field-label {
+    font-size: 14px;
+    color: #555;
+    display: flex;
+    align-items: center;
+  }
+
+  ::ng-deep mat-icon {
+    font-size: 18px;
+    margin-right: 4px;
+  }
+}
+.article-card {
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+  &:hover {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  }
+}

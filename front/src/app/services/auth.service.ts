@@ -14,7 +14,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(request: LoginRequest): Observable<JwtResponse> {
-  return this.http.post<JwtResponse>(`${this.apiUrl}/auth/login`, request).pipe(
+  return this.http.post<JwtResponse>(`${this.apiUrl}/login`, request).pipe(
     tap(response => {
       this.saveSession(response);
     })
@@ -22,7 +22,7 @@ export class AuthService {
 }
 
 register(request: SignupRequest): Observable<JwtResponse> {
-  return this.http.post<JwtResponse>(`${this.apiUrl}/auth/register`, request).pipe(
+  return this.http.post<JwtResponse>(`${this.apiUrl}/register`, request).pipe(
     tap(response => {
       this.saveSession(response);
     })

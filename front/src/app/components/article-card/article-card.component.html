@@ -1,0 +1,15 @@
+<mat-card class="article-card">
+  <div class="article-meta">
+    <h3 class="article-title">{{ article.title }}</h3>
+    <div class="article-info">
+  <div class="article-info">
+  <span class="date">{{ article.date | date:'shortDate' }}</span>
+  <span class="author">{{ author?.name }}</span>
+</div>
+
+</div>
+
+  </div>
+
+  <p class="article-content">{{ article.content }}</p>
+</mat-card>
