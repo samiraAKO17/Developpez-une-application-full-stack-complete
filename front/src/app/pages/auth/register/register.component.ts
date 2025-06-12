@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -8,8 +10,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
+ errorMessage = '';
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -18,11 +25,19 @@ export class RegisterComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
+  
 
-  onSubmit(): void {
+   onsubmit(): void {
     if (this.registerForm.valid) {
-      // Appeler le service d'inscription ici
-      console.log(this.registerForm.value);
+      const { username, email, password } = this.registerForm.value;
+      this.authService.register({ username, email, password }).subscribe({
+        next: (response) => {
+
+          this.router.navigate(['/feed'])},
+        error: err => {
+          this.errorMessage = err.error.message || 'Une erreur est survenue.';
+        }
+      });
     }
   }
 }

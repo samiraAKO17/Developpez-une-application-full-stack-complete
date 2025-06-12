@@ -8,6 +8,8 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { AuthenticatedLayoutComponent } from './components/authenticated-layout/authenticated-layout.component';
 import { TopicsComponent } from './pages/topics/topics-list/topics.component';
 import { ArticleDetailsComponent } from './pages/articles/article-details/article-details.component';
+import { ArticleCreateComponent } from './pages/articles/article-create/article-create.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 // consider a guard combined with canLoad / canActivate route option
 // to manage unauthenticated user to access private routes
@@ -24,6 +26,12 @@ const routes: Routes = [
       { path: 'topics-list', component: TopicsComponent },
       {
         path: 'article-details/:id', component: ArticleDetailsComponent
+      },
+       {
+        path: 'article-create', component: ArticleCreateComponent
+      },
+       {
+        path: 'profile', component: ProfileComponent
       }
     ]
   }

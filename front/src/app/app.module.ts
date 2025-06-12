@@ -18,11 +18,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { ArticleCardComponent } from './components/article-card/article-card.component';
 import { TopicsComponent } from './pages/topics/topics-list/topics.component';
 import { ArticleDetailsComponent } from './pages/articles/article-details/article-details.component';
+import { ArticleCreateComponent } from './pages/articles/article-create/article-create.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, FeedComponent, WelcomeComponent, HeaderComponent, AuthenticatedLayoutComponent, ArticleCardComponent, TopicsComponent, ArticleDetailsComponent],
+  declarations: [AppComponent, HomeComponent, FeedComponent, WelcomeComponent, HeaderComponent, AuthenticatedLayoutComponent, ArticleCardComponent, TopicsComponent, ArticleDetailsComponent, ArticleCreateComponent, ProfileComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
