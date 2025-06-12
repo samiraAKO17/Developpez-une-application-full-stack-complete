@@ -1,4 +1,4 @@
-package com.backEndJavaSpring.Chatop_app.Exception;
+package com.openclassrooms.mddapi.Exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

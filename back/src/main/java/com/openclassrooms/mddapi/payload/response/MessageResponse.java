@@ -1,4 +1,4 @@
-package com.openclassrooms.starterjwt.payload.response;
+package com.openclassrooms.mddapi.payload.response;
 
 public class MessageResponse {
   private String message;

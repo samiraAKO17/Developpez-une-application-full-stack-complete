@@ -1,4 +1,4 @@
-package com.openclassrooms.starterjwt.mapper;
+package com.openclassrooms.mddapi.mappers;
 
 import java.util.List;
 

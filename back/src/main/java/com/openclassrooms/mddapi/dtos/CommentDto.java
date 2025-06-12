@@ -1,23 +1,20 @@
 package com.openclassrooms.mddapi.dtos;
 
-import com.openclassrooms.mddapi.models.Article;
-import com.openclassrooms.mddapi.models.User;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-@Entity
-@Table(name = "COMMENTS")
+import java.util.Date;
+
 @Data
-@NoArgsConstructor
-@RequiredArgsConstructor
 @AllArgsConstructor
-@ToString
-public class Comment {
+public class CommentDto {
     private Long id;
     private String comment;
-    private User user;
-    private Article article;
+    private Long user;
+    private Long article;
     private Date date;
 
 }

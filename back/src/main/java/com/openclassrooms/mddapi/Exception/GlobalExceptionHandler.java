@@ -1,4 +1,4 @@
-package com.backEndJavaSpring.Chatop_app.Exception;
+package com.openclassrooms.mddapi.Exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

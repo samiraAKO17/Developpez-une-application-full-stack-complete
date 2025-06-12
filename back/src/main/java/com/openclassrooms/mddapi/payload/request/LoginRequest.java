@@ -1,4 +1,4 @@
-package com.openclassrooms.starterjwt.payload.request;
+package com.openclassrooms.mddapi.payload.request;
 
 import javax.validation.constraints.NotBlank;
 

@@ -1,12 +1,6 @@
-package com.openclassrooms.starterjwt.security.jwt;
+package com.openclassrooms.mddapi.security.jwt;
 
-import java.io.IOException;
-
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.openclassrooms.mddapi.security.services.UserDetailsServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,49 +11,40 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.openclassrooms.starterjwt.security.services.UserDetailsServiceImpl;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class AuthTokenFilter extends OncePerRequestFilter {
   @Autowired
-  private JwtUtils jwtUtils;
+  private JwtUtils jwtUtil;
 
-  @Autowired
-  private UserDetailsServiceImpl userDetailsService;
-
-  private static final Logger logger = LoggerFactory.getLogger(AuthTokenFilter.class);
 
   @Override
-  protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-      throws ServletException, IOException {
-    try {
-      String jwt = parseJwt(request);
-      if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
-        String username = jwtUtils.getUserNameFromJwtToken(jwt);
+  protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
+          throws ServletException, IOException {
+    String requestURI = request.getRequestURI();
 
-        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+    // ne pas demandé de token pour auth
+    if (requestURI.startsWith("/api/auth")) {
+      chain.doFilter(request, response);
+      return;
+    }
+    String authHeader = request.getHeader("Authorization");
+
+    if (authHeader != null && authHeader.startsWith("Bearer ")) {
+      String token = authHeader.substring(7);
+      String username = jwtUtil.extractUsername(token);
+
+      if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
         UsernamePasswordAuthenticationToken authentication =
-            new UsernamePasswordAuthenticationToken(
-                userDetails,
-                null,
-                userDetails.getAuthorities());
-        authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-
+                new UsernamePasswordAuthenticationToken(username, null, new ArrayList<>());
         SecurityContextHolder.getContext().setAuthentication(authentication);
       }
-    } catch (Exception e) {
-      logger.error("Cannot set user authentication: {}", e);
     }
-
-    filterChain.doFilter(request, response);
-  }
-
-  private String parseJwt(HttpServletRequest request) {
-    String headerAuth = request.getHeader("Authorization");
-
-    if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {
-      return headerAuth.substring(7, headerAuth.length());
-    }
-
-    return null;
+    chain.doFilter(request, response);
   }
 }

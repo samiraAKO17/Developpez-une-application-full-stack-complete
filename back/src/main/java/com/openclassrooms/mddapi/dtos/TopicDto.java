@@ -1,20 +1,18 @@
 package com.openclassrooms.mddapi.dtos;
 
+import com.openclassrooms.mddapi.models.Article;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import java.util.List;
 
 @Data
-@NoArgsConstructor
-@RequiredArgsConstructor
 @AllArgsConstructor
-@ToString
-public class TopicDtos {
+public class TopicDto {
     private Long id;
     private String title;
     private String description;
-
-
+    private List<Long> articles;
 }
