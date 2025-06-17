@@ -3,10 +3,8 @@
     <div class="topic-content">
       <h3>{{ topic.title }}</h3>
       <p>{{ topic.description }}</p>
-      <button mat-stroked-button
-              [color]="topic.isSubscribed ? 'warn' : 'primary'"
-              (click)="toggleSubscription(topic)">
-        {{ topic.isSubscribed ? 'Se désabonner' : 'S’abonner' }}
+      <button mat-stroked-button [disabled]="topic.isSubscribed" color="primary" (click)="subscribe(topic)">
+        {{ topic.isSubscribed ? 'Déjà abonné' : 'S’abonner' }}
       </button>
     </div>
   </mat-card>

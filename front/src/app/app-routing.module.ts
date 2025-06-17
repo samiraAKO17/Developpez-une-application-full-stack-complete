@@ -10,9 +10,9 @@ import { TopicsComponent } from './pages/topics/topics-list/topics.component';
 import { ArticleDetailsComponent } from './pages/articles/article-details/article-details.component';
 import { ArticleCreateComponent } from './pages/articles/article-create/article-create.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { AuthGuard } from './guards/auth.guard';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
-// consider a guard combined with canLoad / canActivate route option
-// to manage unauthenticated user to access private routes
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', component: WelcomeComponent },
@@ -22,17 +22,19 @@ const routes: Routes = [
     path: '', component: AuthenticatedLayoutComponent,
     // canActivate: [AuthGuard],  // protégé par l'authentification
     children: [
-      { path: 'feed', component: FeedComponent },
-      { path: 'topics-list', component: TopicsComponent },
+      { path: 'feed', component: FeedComponent, canActivate: [AuthGuard] },
+      { path: 'topics-list', component: TopicsComponent, canActivate: [AuthGuard] },
       {
-        path: 'article-details/:id', component: ArticleDetailsComponent
+        path: 'article-details/:id', component: ArticleDetailsComponent, canActivate: [AuthGuard]
       },
-       {
-        path: 'article-create', component: ArticleCreateComponent
+      {
+        path: 'article-create', component: ArticleCreateComponent, canActivate: [AuthGuard]
       },
-       {
-        path: 'profile', component: ProfileComponent
-      }
+      {
+        path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]
+      },
+      { path: '404', component: NotFoundComponent },
+      { path: '**', redirectTo: '404' }
     ]
   }
 ];

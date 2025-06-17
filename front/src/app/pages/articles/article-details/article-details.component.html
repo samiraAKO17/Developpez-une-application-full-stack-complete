@@ -1,15 +1,14 @@
 <div class="header">
-<button class="back-button" (click)="goBack()">←</button>
-<br>
+  <button class="back-button" (click)="goBack()">←</button>
   <h1 class="title">{{ article.title }}</h1>
-</div>  
-<div class="article-details-container">
+</div>
 
+<div class="article-details-container">
   <div class="meta">
     <span>{{ article.date | date }}</span>
-    <span class="dot"></span>
+    <span class="spacer"></span>
     <span>{{ author.name }}</span>
-    <span class="dot"></span>
+    <span class="spacer"></span>
     <span>{{ articleTopic.title }}</span>
   </div>
 
@@ -23,15 +22,17 @@
 
   <div class="comments-list">
     <div *ngFor="let comment of comments" class="comment">
-      <div class="username">{{ comment.user }}</div>
-      <div class="bubble">{{ comment.comment }}</div>
+      <div class="comment-header">
+        <span class="username">{{ comment.user }}</span>
+        <span class="bubble">{{ comment.comment }}</span>
+      </div>
     </div>
   </div>
 
   <form class="comment-form" (ngSubmit)="submitComment()">
     <textarea [(ngModel)]="newComment" name="comment" placeholder="Écrivez ici votre commentaire"></textarea>
-    <button type="submit" class="send-button">
-      <i class="fa fa-paper-plane"></i> <!-- ou une icône svg -->
+    <button mat-icon-button type="submit" aria-label="Envoyer" class="send-button">
+      <mat-icon>send</mat-icon>
     </button>
   </form>
 </div>

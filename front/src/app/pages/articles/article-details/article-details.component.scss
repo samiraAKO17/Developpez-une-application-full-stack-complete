@@ -1,146 +1,171 @@
- .header {
-   display: flex;
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-left: 1rem;
 
-   .back-button {
-     background: none;
-     border: none;
-     font-size: 1.8rem;
-     cursor: pointer;
-     margin-bottom: 0.5rem;
+  .back-button {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: black;
+  }
 
-   }
+  .title {
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+}
 
-   .title {
-     font-size: 1.8rem;
-     font-weight: 500;
-     margin-bottom: 0.5 rem;
+.article-details-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 1rem;
+  font-family: 'Roboto', sans-serif;
 
-   }
+  .meta {
+    color: #666;
+    font-size: 0.9rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
 
- }
+    .spacer {
+      margin: 0 0.5rem;
+    }
+  }
 
- .article-details-container {
-   max-width: 800px;
-   margin: 20px;
-   padding: 1rem;
-   font-family: 'Roboto', sans-serif;
+  .content {
+    margin: 1rem 0 1.5rem;
+    line-height: 1.6;
+  }
 
+  .comments-title {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+  }
 
-   .meta {
-     color: #666;
-     font-size: 0.9rem;
-     display: flex;
-     gap: 0.5rem;
-     align-items: center;
+  .comments-list {
+    margin-top: 1rem;
+    margin: 1rem; // Ajout du retrait
 
-     .dot {
-       font-weight: bold;
-     }
-   }
+    .comment {
+      margin: 1rem 0;
 
-   .content {
-     margin-top: 1rem;
-     margin-bottom: 1.5rem;
-     line-height: 1.6;
-   }
+      .comment-header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
 
-   .comments-title {
-     font-size: 1.2rem;
-     margin-top: 2rem;
-   }
+        .username {
+          font-weight: 600;
+          font-size: 0.9rem;
+        }
 
-   .comments-list {
-     max-width: 100%;
+        .bubble {
+          background: #f2f2f2;
+          border-radius: 10px;
+          padding: 0.5rem 1rem;
+          max-width: 100%;
+          display: -webkit-box;
+          -webkit-line-clamp: 2; // ✅ Limite à 2 lignes
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
 
-     .comment {
-       margin: 20px;
-       display: flex;
-       flex-direction: column;
-       margin-top: 1rem;
-       max-width: 93%;
+  .comment-form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    margin: 1rem; // Ajout du retrait
 
-       .username {
-         font-weight: 600;
-         font-size: 0.9rem;
-         margin-bottom: 0.25rem;
-       }
+    textarea {
+      flex: 1;
+      padding: 0.75rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      resize: none;
+      font-family: inherit;
+    }
 
-       .bubble {
-         background: #f2f2f2;
-         border-radius: 10px;
-         padding: 0.5rem 1rem;
-         max-width: 100%;
-       }
-     }
-   }
+    .send-button {
+      mat-icon {
+        font-size: 24px;
+        color: #1976d2;
+      }
 
-   .comment-form {
-     display: flex;
-     margin: 20px;
-     align-items: center;
-     margin-top: 1rem;
-     gap: 0.5rem;
-     max-width: 100%;
+      &:hover mat-icon {
+        color: #004ba0;
+      }
+    }
+  }
+}
 
-     textarea {
-       flex: 1;
-       padding: 0.75rem;
-       border-radius: 10px;
-       border: 1px solid #ccc;
-       resize: none;
-       font-family: inherit;
-       max-width: 100%;
+// Responsive
+@media (max-width: 768px) {
+  .article-details-container {
+    padding: 0.5rem;
+    margin: 0 1rem;
 
-     }
+    .comment-form {
+  display: flex;
+  flex-direction: row; // ✅ garder la ligne
+  padding: 0 0.5rem;
 
-     .send-button {
-       background: transparent;
-       border: none;
-       cursor: pointer;
-       font-size: 1.5rem;
-       color: #7e22ce;
-     }
-   }
- }
+  textarea {
+    flex: 1;
+    width: 100%;
+    //padding: 0.75rem;
+  }
 
- // Responsive
- @media (max-width: 768px) {
-   .article-details-container {
-     padding: 0.5rem;
-     margin: 0px;
+  .send-button {
+    align-self: flex-end; // ✅ pour bien l’aligner à droite du champ
+  }
+}
 
-     .comment-form {
-       flex-direction: column;
-       align-items: stretch;
-       margin: 0;
-       margin-top: 1rem;
-       gap: 0.5rem;
+.comments-list {
+  margin: 0;
+  margin-top: 2rem;
 
-       textarea {
-         width: 92%;
-         padding: 0.75rem;
+  .comment {
+    margin: 0;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; // ✅ aligner à droite
 
-       }
+    .username {
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+      text-align: right; // ✅ texte aligné à droite
+    }
 
-       .send-button {
-         align-self: flex-end;
-         margin-top: 0.5rem;
-       }
+    .bubble {
+      background: #f2f2f2;
+      border-radius: 10px;
+      padding: 0.5rem 1rem;
+      max-width: 100%;
+      word-wrap: break-word;
+    }
+  }
+}
+  }
 
+  .header {
+    flex-direction: row;
+    align-items: center;
+    padding-left: 0.5rem;
 
-     }
-
-     .comments-list {
-       margin: 0;
-       margin-top: 2rem;
-
-       .comment {
-         margin: 0;
-         max-width: 99%;
-         margin-top: 2rem;
-
-
-       }
-     }
-   }
- }
+    .title {
+      font-size: 1.4rem;
+    }
+  }
+}

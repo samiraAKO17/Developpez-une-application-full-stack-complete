@@ -28,16 +28,12 @@ export class TopicsComponent implements OnInit {
     });
   }
 
-  toggleSubscription(topic: Topic & { isSubscribed: boolean }) {
-    if (topic.isSubscribed) {
-      this.topicService.unsubscribeFromTopic(topic.id).subscribe(() => {
-        topic.isSubscribed = false;
-      });
-    } else {
-      this.topicService.subscribeToTopic(topic.id).subscribe(() => {
-        topic.isSubscribed = true;
-      });
-    }
-    this.loadTopics();
+  subscribe(topic: Topic & { isSubscribed: boolean }) {
+  if (!topic.isSubscribed) {
+    this.topicService.subscribeToTopic(topic.id).subscribe(() => {
+      topic.isSubscribed = true;
+    });
   }
+}
+
 }

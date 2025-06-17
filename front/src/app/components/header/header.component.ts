@@ -13,7 +13,9 @@ export class HeaderComponent {
   @ViewChild('sidenav') sidenav!: MatSidenav;
 
   isMobile = window.innerWidth <= 600;
-  constructor(private session : SessionService, private router : Router){}
+
+  constructor(private session: SessionService, private router: Router) {}
+
   @HostListener('window:resize')
   onResize() {
     this.isMobile = window.innerWidth <= 600;
@@ -22,6 +24,7 @@ export class HeaderComponent {
   logoutAndClose() {
     this.onLogout.emit();
     this.session.logout();
-    this.router.navigate(['/'])
+    this.router.navigate(['/']);
+    this.sidenav.close();
   }
 }

@@ -1,21 +1,33 @@
 <div class="profile-container">
   <h1>Profil utilisateur</h1>
 
-  <form class="profile-form" (ngSubmit)="save()">
+  <form class="profile-form" [formGroup]="profileForm" (ngSubmit)="save()">
     <mat-form-field appearance="outline">
       <mat-label>Nom</mat-label>
-      <input matInput [(ngModel)]="user.name" name="name">
+      <input matInput formControlName="name">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
-      <input matInput [(ngModel)]="user.username" name="email">
+      <input matInput formControlName="username">
     </mat-form-field>
-
+<span *ngIf="profileForm.get('username')?.invalid && profileForm.get('username')?.touched" class="error">
+  <span *ngIf="profileForm.get('username')?.errors?.['required']">
+    L'email est requis.
+  </span>
+  <span *ngIf="profileForm.get('username')?.errors?.['email']">
+    L'adresse email n'est pas valide.
+  </span>
+</span>
+<br>
     <mat-form-field appearance="outline">
       <mat-label>Mot de passe</mat-label>
-      <input matInput [(ngModel)]="user.password" name="password" type="password">
+      <input matInput formControlName="password" type="password">
     </mat-form-field>
+
+    <div *ngIf="profileForm.get('password')?.errors?.['passwordStrength'] && profileForm.get('password')?.touched" class="error">
+      Le mot de passe doit avoir un nombre de caractères supérieur ou égal à 8 et contenir au moins : une minuscule, une majuscule, un chiffre et un caractère spécial.
+    </div>
 
     <button mat-raised-button color="primary" type="submit">Sauvegarder</button>
   </form>
