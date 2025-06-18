@@ -1,0 +1,71 @@
+# Monde de Dév - Backend
+
+Backend de l’application **Monde de Dév (MDD)** développé avec **Java 17** et **Spring Boot**.
+
+Ce projet expose une API REST sécurisée qui gère l’authentification, les utilisateurs, les articles, les commentaires et les thèmes.
+
+## 🛠️ Technologies utilisées
+
+- Java 17
+- Spring Boot 3
+- Spring Security (JWT)
+- Spring Data JPA (Hibernate)
+- MySQL (ou H2 pour dev)
+- Maven
+
+## 📦 Installation
+
+```bash
+mvn clean install
+🚀 Lancement en développement
+bash
+mvn spring-boot:run
+
+L’API est accessible sur : http://localhost:8080/api
+
+📁 Structure
+controllers/ : endpoints REST (auth, users, articles, comments, topics)
+
+services/ : logique métier
+
+models/ : entités JPA
+
+repositories/ : interfaces JPA
+
+security/ : configuration JWT et filtres de sécurité
+
+🔐 Sécurité
+Authentification par JWT
+
+Cryptage des mots de passe avec BCrypt
+
+Règles de validation strictes sur les mots de passe :
+
+Min. 8 caractères
+
+1 majuscule, 1 minuscule, 1 chiffre, 1 caractère spécial
+
+📌 Fonctionnalités
+Inscription / Connexion
+
+Récupération des infos du profil
+
+Création d’articles et de commentaires avec auteur + date auto
+
+Abonnement / désabonnement à des thèmes
+
+Filtres de sécurité avec autorisation par rôle
+
+⚙️ Configuration
+Le fichier application.properties contient les configurations principales.
+
+Pour la base de données locale :
+
+properties
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/mdd
+spring.datasource.username=postgres
+spring.datasource.password=yourpassword
+jwt.secret=your_jwt_secret
+🧪 Test de l’API
+L’API peut être testée avec Postman ou directement via le frontend Angular (localhost:4200).
