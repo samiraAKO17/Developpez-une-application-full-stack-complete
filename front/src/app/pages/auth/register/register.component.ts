@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { SignupRequest } from '../interfaces/signup-request.interface';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +21,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
-      username: ['', Validators.required],
+      name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: [
         '',
@@ -36,8 +37,8 @@ export class RegisterComponent implements OnInit {
 
   onsubmit(): void {
     if (this.registerForm.valid) {
-      const { username, email, password } = this.registerForm.value;
-      this.authService.register({ username, email, password }).subscribe({
+      const signUp : SignupRequest = this.registerForm.value;
+      this.authService.register(signUp).subscribe({
         next: (response) => {
 
           this.router.navigate(['/feed'])

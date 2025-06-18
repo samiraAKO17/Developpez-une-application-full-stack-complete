@@ -33,6 +33,7 @@ export class TopicsComponent implements OnInit {
     this.topicService.subscribeToTopic(topic.id).subscribe(() => {
       topic.isSubscribed = true;
     });
+   // this.loadTopics();
   }
 }
 

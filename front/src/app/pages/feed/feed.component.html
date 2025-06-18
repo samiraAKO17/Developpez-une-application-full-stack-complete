@@ -7,20 +7,20 @@
 
   <div class="right-side">
     <mat-form-field appearance="fill" class="sort-dropdown">
-  <mat-label>
-    <mat-icon>sort</mat-icon>&nbsp;Trier par
-  </mat-label>
-  <mat-select [(value)]="selectedSort" (selectionChange)="onSortChange()">
-    <mat-option value="date">Date</mat-option>
-    <mat-option value="title">Titre</mat-option>
-  </mat-select>
-</mat-form-field>
+      <mat-label>
+        <mat-icon>sort</mat-icon>&nbsp;Trier par
+      </mat-label>
+      <mat-select [(value)]="selectedSort" (selectionChange)="onSortChange()">
+        <mat-option value="desc">Du plus récent au plus ancien</mat-option>
+        <mat-option value="asc">Du plus ancien au plus récent</mat-option>
+      </mat-select>
+    </mat-form-field>
+
 
   </div>
 </div>
 
 <section class="feed">
-  <app-article-card
-    *ngFor="let article of articles"
-    [article]="article" [routerLink]="['/article-details', article.id]"  ></app-article-card>
+  <app-article-card *ngFor="let article of articles" [article]="article"
+    [routerLink]="['/article-details', article.id]"></app-article-card>
 </section>

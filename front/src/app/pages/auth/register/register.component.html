@@ -18,8 +18,8 @@
   <form [formGroup]="registerForm" (ngSubmit)="onsubmit()">
     <div class="form-group">
       <mat-form-field class="custom-field">
-        <label for="username">Nom d’utilisateur</label>
-        <input matInput id="username" type="text" formControlName="username" />
+        <label for="name">Nom d’utilisateur</label>
+        <input matInput id="name" type="text" formControlName="name" />
       </mat-form-field>
     </div>
 
@@ -29,11 +29,11 @@
         <input matInput id="email" type="email" formControlName="email" />
       </mat-form-field>
     </div>
-<div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched" class="error">
-  <div *ngIf="registerForm.get('username')?.errors?.['required']">
+<div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error">
+  <div *ngIf="registerForm.get('email')?.errors?.['required']">
     L'email est requis.
   </div>
-  <div *ngIf="registerForm.get('username')?.errors?.['email']">
+  <div *ngIf="registerForm.get('email')?.errors?.['email']">
     L'adresse email n'est pas valide.
   </div>
 </div>

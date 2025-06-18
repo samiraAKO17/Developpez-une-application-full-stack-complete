@@ -1,0 +1,50 @@
+# Monde de Dév - Frontend
+
+Frontend de l'application **Monde de Dév (MDD)** développée avec **Angular 17**.  
+Ce projet permet à des développeurs de publier des articles, commenter et s’abonner à des thèmes.
+
+## Technologies utilisées
+
+- Angular 17
+- Angular Material
+- TypeScript
+- SCSS
+- RxJS
+- Form Validation (Reactive Forms)
+- Routing avec Guards
+
+##  Installation
+
+```bash
+npm install
+🚀 Lancement en développement
+bash
+ng serve
+
+L’application sera disponible sur http://localhost:4200.
+
+📁 Structure
+components/ : composants Angular modulaires
+
+services/ : communication avec l’API backend
+
+models/ : interfaces TypeScript des objets métiers
+
+guards/ : protection des routes par authentification
+
+🔐* Fonctionnalités clés
+
+Authentification (inscription/login sécurisé via JWT)
+
+Fil d’actualités triable (par date ou titre)
+
+Création et affichage d’articles & commentaires
+
+Gestion du profil utilisateur
+
+Page des thèmes avec gestion des abonnements
+
+Interface responsive mobile & desktop conforme aux maquettes Figma
+
+⚙️ Configuration
+Vérifiez que l’API backend tourne sur http://localhost:8080.

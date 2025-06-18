@@ -59,6 +59,7 @@ export class ProfileComponent implements OnInit {
     this.topicService.unsubscribeFromTopic(topicId).subscribe(() => {
       this.topics = this.topics.filter(t => t.id !== topicId);
     });
+    this.ngOnInit();
   }
 
   passwordValidator(control: any) {

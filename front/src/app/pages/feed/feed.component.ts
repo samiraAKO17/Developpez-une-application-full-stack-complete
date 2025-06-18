@@ -10,14 +10,13 @@ import { Article } from '../../models/article.model';
 })
 export class FeedComponent implements OnInit {
   articles: Article[] = [];
-  selectedSort: string = 'date';
-
+  selectedSort: string = 'desc';
   constructor(private articleService: ArticleService) { }
 
   ngOnInit(): void {
     this.articleService.getFeed().subscribe((data) => {
       this.articles = data;
-      this.sortArticles(); // Tri initial
+      this.sortArticles(); 
     });
   }
 
@@ -26,13 +25,16 @@ export class FeedComponent implements OnInit {
   }
 
   private sortArticles(): void {
-    this.articles.sort((a, b) => {
-      if (this.selectedSort === 'title') {
-        return a.title.localeCompare(b.title);
-      } else if (this.selectedSort === 'date') {
-        return new Date(b.date).getTime() - new Date(a.date).getTime(); // plus récent en premier
-      }
-      return 0;
-    });
-  }
+  this.articles.sort((a, b) => {
+    const dateA = new Date(a.date).getTime();
+    const dateB = new Date(b.date).getTime();
+
+    if (this.selectedSort === 'asc') {
+      return dateA - dateB; // du plus ancien au plus récent
+    } else {
+      return dateB - dateA; // du plus récent au plus ancien
+    }
+  });
+}
+
 }

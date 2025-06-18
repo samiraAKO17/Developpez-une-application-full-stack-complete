@@ -19,24 +19,24 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   {
-    path: '', component: AuthenticatedLayoutComponent,
+    path: '', component: AuthenticatedLayoutComponent, canActivate: [AuthGuard],
     // canActivate: [AuthGuard],  // protégé par l'authentification
     children: [
-      { path: 'feed', component: FeedComponent, canActivate: [AuthGuard] },
-      { path: 'topics-list', component: TopicsComponent, canActivate: [AuthGuard] },
+      { path: 'feed', component: FeedComponent },
+      { path: 'topics-list', component: TopicsComponent},
       {
-        path: 'article-details/:id', component: ArticleDetailsComponent, canActivate: [AuthGuard]
+        path: 'article-details/:id', component: ArticleDetailsComponent
       },
       {
-        path: 'article-create', component: ArticleCreateComponent, canActivate: [AuthGuard]
+        path: 'article-create', component: ArticleCreateComponent
       },
       {
-        path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]
-      },
+        path: 'profile', component: ProfileComponent
+      }
+    ]
+  },
       { path: '404', component: NotFoundComponent },
       { path: '**', redirectTo: '404' }
-    ]
-  }
 ];
 
 @NgModule({
