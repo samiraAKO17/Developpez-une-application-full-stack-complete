@@ -1,32 +1,19 @@
-<mat-sidenav-container class="sidenav-container" *ngIf="isMobile">
-  <mat-sidenav #sidenav mode="over" position="end">
-    <button mat-button class="deconnect" (click)="logoutAndClose()">Se Déconnecter</button>
-    <a mat-button routerLink="/feed" routerLinkActive="active" (click)="sidenav.close()">Articles</a>
-    <a mat-button routerLink="/topics-list" routerLinkActive="active" (click)="sidenav.close()">Thèmes</a>
-    <a mat-icon-button routerLink="/profile" routerLinkActive="active" (click)="sidenav.close()">
-      <mat-icon>account_circle</mat-icon>
-    </a>
-  </mat-sidenav>
-
-  <mat-sidenav-content>
-    <header class="app-header">
-      <img src="/assets/logo_p6.png" alt="Logo MDD" class="logo" />
-      <button mat-icon-button class="burger-btn" (click)="sidenav.open()">
-        <mat-icon>menu</mat-icon>
-      </button>
-    </header>
-  </mat-sidenav-content>
-</mat-sidenav-container>
-
-<!-- Desktop -->
-<header class="app-header" *ngIf="!isMobile">
+<header class="app-header">
   <img src="/assets/logo_p6.png" alt="Logo MDD" class="logo" />
-  <nav class="nav-desktop">
-    <button mat-button class="deconnect" (click)="logoutAndClose()">Se Déconnecter</button>
-    <a mat-button routerLink="/feed" routerLinkActive="active">Articles</a>
-    <a mat-button routerLink="/topics-list" routerLinkActive="active">Thèmes</a>
-    <a mat-icon-button routerLink="/profile" routerLinkActive="active">
-      <mat-icon>account_circle</mat-icon>
-    </a>
-  </nav>
+  <ng-container *ngIf="isMobile; else desktopNav">
+    <button mat-icon-button class="burger-btn" (click)="openSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </ng-container>
+
+  <ng-template #desktopNav>
+    <nav class="nav-desktop">
+      <button mat-button class="deconnect" (click)="logoutAndClose()">Se Déconnecter</button>
+      <a mat-button routerLink="/feed" routerLinkActive="active">Articles</a>
+      <a mat-button routerLink="/topics-list" routerLinkActive="active">Thèmes</a>
+      <a mat-icon-button routerLink="/profile" routerLinkActive="active">
+        <mat-icon>account_circle</mat-icon>
+      </a>
+    </nav>
+  </ng-template>
 </header>

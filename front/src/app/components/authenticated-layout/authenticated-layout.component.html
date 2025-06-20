@@ -1,4 +1,27 @@
-<app-header></app-header>
-<main class="main-content">
-  <router-outlet></router-outlet>
-</main>
+<mat-sidenav-container class="sidenav-container">
+  <!-- Le menu burger (mobile uniquement) -->
+  <mat-sidenav
+    #sidenav
+    class="mobile-sidenav"
+    mode="over"
+    position="end"
+    [opened]="false"
+    [autoFocus]="false"
+  >
+    <div class="sidenav-content">
+      <button mat-button class="logout" (click)="logout()">Se Déconnecter</button>
+      <a mat-button routerLink="/feed" (click)="sidenav.close()">Articles</a>
+      <a mat-button routerLink="/topics-list" (click)="sidenav.close()">Thèmes</a>
+      <a mat-icon-button routerLink="/profile" (click)="sidenav.close()" class="profile-icon">
+        <mat-icon>account_circle</mat-icon>
+      </a>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-header (toggleSidenav)="sidenav.open()"></app-header>
+    <main class="main-content">
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

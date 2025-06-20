@@ -20,7 +20,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: '', component: AuthenticatedLayoutComponent, canActivate: [AuthGuard],
-    // canActivate: [AuthGuard],  // protégé par l'authentification
     children: [
       { path: 'feed', component: FeedComponent },
       { path: 'topics-list', component: TopicsComponent},
