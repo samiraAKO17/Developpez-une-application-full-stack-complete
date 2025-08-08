@@ -54,18 +54,14 @@ Création d’articles et de commentaires avec auteur + date auto
 
 Abonnement / désabonnement à des thèmes
 
-Filtres de sécurité avec autorisation par rôle
 
 ⚙️ Configuration
 Le fichier application.properties contient les configurations principales.
 
 Pour la base de données locale :
-
-properties
-
-spring.datasource.url=jdbc:postgresql://localhost:5432/mdd
-spring.datasource.username=postgres
+spring.datasource.url=jdbc:mysql://localhost:3306/mdd?allowPublicKeyRetrieval=true
+spring.datasource.username=username
 spring.datasource.password=yourpassword
-jwt.secret=your_jwt_secret
+jwt.secret=your_jwt_secret => a ajouté en variable env
 🧪 Test de l’API
 L’API peut être testée avec Postman ou directement via le frontend Angular (localhost:4200).

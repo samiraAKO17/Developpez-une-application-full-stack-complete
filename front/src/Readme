@@ -1,11 +1,11 @@
 # Monde de Dév - Frontend
 
-Frontend de l'application **Monde de Dév (MDD)** développée avec **Angular 17**.  
+Frontend de l'application **Monde de Dév (MDD)** développée avec **Angular 14**.  
 Ce projet permet à des développeurs de publier des articles, commenter et s’abonner à des thèmes.
 
 ## Technologies utilisées
 
-- Angular 17
+- Angular 14
 - Angular Material
 - TypeScript
 - SCSS
@@ -36,7 +36,7 @@ guards/ : protection des routes par authentification
 
 Authentification (inscription/login sécurisé via JWT)
 
-Fil d’actualités triable (par date ou titre)
+Fil d’actualités triable (plus récent ou moins récent)
 
 Création et affichage d’articles & commentaires
 
@@ -44,7 +44,7 @@ Gestion du profil utilisateur
 
 Page des thèmes avec gestion des abonnements
 
-Interface responsive mobile & desktop conforme aux maquettes Figma
+Interface responsive mobile & desktop conforme aux maquettes Figma fournies
 
 ⚙️ Configuration
 Vérifiez que l’API backend tourne sur http://localhost:8080.
